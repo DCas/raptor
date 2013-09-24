@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  time: 2013-09-22 00:18:36
+  home_id: 1
+  away_id: 1
+  home_symbol: MyString
+  home_symbol: MyString
+  away_symbol: MyString
+
+two:
+  time: 2013-09-22 00:18:36
+  home_id: 1
+  away_id: 1
+  home_symbol: MyString
+  home_symbol: MyString
+  away_symbol: MyString

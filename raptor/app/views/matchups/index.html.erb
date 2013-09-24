@@ -1,0 +1,36 @@
+<h1>NFL Week <% unless @matchups.empty? %>
+  <%= @matchups.first.week %>
+  <% end %>
+</h1>
+
+<table class="table" >
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>  
+      <th>Matchup</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matchups.each do |matchup| %>
+       <tr> 
+	<td><%= matchup.parse_time(matchup.time) %></td>
+        <td><%= matchup.home_id %></td>
+        <td><%= matchup.away_id %></td>
+        <td><%= matchup.home_symbol %> vs. <%= matchup.away_symbol %></td>
+        <td>
+          <% if(matchup.id==27) %>
+            <%=link_to 'Show', matchup %>
+    <% end%>
+          </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

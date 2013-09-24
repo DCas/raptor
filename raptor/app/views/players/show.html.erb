@@ -1,0 +1,76 @@
+<p id="notice">
+  <%= notice %>
+</p>
+
+<h2><%= @player.name %></h2>
+  <p>
+    <strong>Twitter username:</strong>
+    <%= @player.twitter_username %>
+  </p>
+<h3>Week Average: <%= @average %></h3>
+          <% if @average > 0.25 %>
+          <div id="big" class="smiley-green">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+        <% elsif @average < -0.25 %>
+          <div id="big" class="smiley-red">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+        <% else %>
+          <div id="big" class="smiley-yellow">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+        <% end %>
+
+
+  <h3>Tweets</h3>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweet_sentiments.each do |tweet| %>
+      <tr>
+        <td>
+          <% if tweet.sentiment=='positive' %>
+          <div class="smiley-green">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+        <% elsif tweet.sentiment=='negative' %>
+          <div class="smiley-red">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+        <% else %>
+          <div class="smiley-yellow">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+        <% end %>
+        </td>
+        <td><%= tweet.sentiment_score.round(3) %></td>
+        <td><%= tweet.post_date %></td>
+        <td><%= tweet.body %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>

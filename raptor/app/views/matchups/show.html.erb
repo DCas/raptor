@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<p class="symbol">
+  <%= @matchup.home_symbol %>
+      vs.
+  <%= @matchup.away_symbol %>
+</p>
+<p>                                                                                                                                                            
+  <strong>Time:</strong>                                                                                                                                       
+  <%= @matchup.time %>                                                                                                                                         
+</p>     
+  
+<table id="players-faces-left" class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><h3><%= @home.week_sentiment %></h3></td>
+    </tr>
+  <% @home.player_sentiments.each do |player, sentiment| %>
+    <tr>
+      <td>
+      <%= link_to player.name, player %></br>
+      <% if sentiment > 0.25 %>
+        <div class='smiley-green'>
+      <% elsif sentiment < -0.25 %>
+        <div class='smiley-red'>
+      <% else %>
+        <div class='smiley-yellow'>
+      <% end %>
+        <div class="left-eye"></div>
+        <div class="right-eye"></div>
+        <div class="smile"></div>
+      </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<table id="players-faces-right" class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <td><h3><%= @away.week_sentiment %></h3></td>
+  <% @away.player_sentiments.each do |player, sentiment| %>
+    <tr>
+      <td>
+      <%= link_to player.name, player %></br>
+      <% if sentiment > 0.25 %>
+        <div class='smiley-green'>
+      <% elsif sentiment < -0.25 %>
+        <div class='smiley-red'>
+      <% else %>
+        <div class='smiley-yellow'>
+      <% end %>
+        <div class="left-eye"></div>
+        <div class="right-eye"></div>
+        <div class="smile"></div>
+      </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
